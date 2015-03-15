@@ -23,8 +23,8 @@ library
               dom-delegator/lib.js
   ghcjs-options: -O2 -Wall
   exposed-modules:     GHCJS.DOMDelegator
-  -- other-modules:       GHCJS.VDOM.Internal
-  build-depends:       base >=4.7
+  other-modules:       GHCJS.DOMDelegator.Internal
+  build-depends:       base >=4.7,
                        ghcjs-ffiqq,
                        ghcjs-base,
                        ghcjs-prim,

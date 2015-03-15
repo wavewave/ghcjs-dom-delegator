@@ -13,4 +13,19 @@
 
  -}
 
-module GHCJS.DOMDelegator () where
+module GHCJS.DOMDelegator 
+( addEvent
+, domDelegator
+) where
+
+import GHCJS.DOMDelegator.Internal
+
+addEvent = js_add_event
+
+domDelegator = js_dom_delegator
+
+delegator = js_delegator
+
+proxyEvent = js_proxy_event
+
+removeEvent = js_remove_event
