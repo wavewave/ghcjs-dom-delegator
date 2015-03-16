@@ -1,3 +1,6 @@
+{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE JavaScriptFFI #-}
+
 module GHCJS.DOMDelegator.Internal where
 
 import Language.Haskell.TH.Quote

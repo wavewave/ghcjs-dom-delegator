@@ -21,8 +21,3 @@ module.exports = { addEvent:     addEvent,
 // the global variable we're using in the bindings
 h$domDelegator = module.exports;
 // h$registerExtensibleRetention(scanTree);
-
-
-console.log(DOMDelegator);
-console.log("-----------------");
-console.log(h$domDelegator.DOMDelegator);
