@@ -8,7 +8,7 @@ import GHCJS.Types
 foreign import javascript unsafe "h$domDelegator.addEvent($1,$2,$3)" 
   js_add_event :: JSRef a -> JSString -> JSFun (JSRef b -> IO c) -> IO ()
 
-foreign import javascript unsafe "h$domDelegator.DomDelegator()" 
+foreign import javascript unsafe "h$domDelegator.DOMDelegator()" 
   js_dom_delegator :: IO (JSRef a)
 
 foreign import javascript unsafe "h$domDelegator.Delegator($1)"

@@ -16,6 +16,9 @@
 module GHCJS.DOMDelegator 
 ( addEvent
 , domDelegator
+, delegator
+, proxyEvent
+, removeEvent
 ) where
 
 import GHCJS.DOMDelegator.Internal

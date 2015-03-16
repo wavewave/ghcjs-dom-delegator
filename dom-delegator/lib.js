@@ -6,20 +6,28 @@
      $ grunt
  */
 
-var DOMDelegator = require('dom-delegator');
+var Delegator = require('dom-delegator');
+var DOMDelegator = require('dom-delegator/dom-delegator');
+var addEvent = require('dom-delegator/add-event');
+var removeEvent = require('dom-delegator/remove-event');
+var ProxyEvent = require('dom-delegator/proxy-event');
 
-module.exports = { addEvent:     DOMDelegator.addEvent,
-                   DOMDelegator: DOMDelegator.DomDelegator,
-                   Delegator:    DOMDelegator.Delegator,
-                   ProxyEvent:   DOMDelegator.ProxyEvent,
-                   removeEvent:  DOMDelegator.removeEvent
+module.exports = { addEvent:     addEvent,
+                   DOMDelegator: DOMDelegator,
+                   Delegator:    Delegator,
+                   ProxyEvent:   ProxyEvent,
+                   removeEvent:  removeEvent
                  };
 
 // the global variable we're using in the bindings
 h$domDelegator = module.exports;
 // h$registerExtensibleRetention(scanTree);
 
-},{"dom-delegator":4}],2:[function(require,module,exports){
+
+console.log(DOMDelegator);
+console.log("-----------------");
+console.log(h$domDelegator.DOMDelegator);
+},{"dom-delegator":4,"dom-delegator/add-event":2,"dom-delegator/dom-delegator":3,"dom-delegator/proxy-event":14,"dom-delegator/remove-event":15}],2:[function(require,module,exports){
 var EvStore = require("ev-store")
 
 module.exports = addEvent
