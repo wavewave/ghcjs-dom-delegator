@@ -14,27 +14,29 @@ import GHCJS.Types
 --
 import GHCJS.DOMDelegator
 
-foreign import javascript unsafe "function{ return document; }" js_document  :: IO (JSRef ())
-foreign import javascript unsafe "$1['querySelector']($2)" 
-  js_query_selector :: JSRef () -> JSString -> IO (JSRef ())
+foreign import javascript unsafe "alert($1)" js_message :: JSString -> IO ()
 
+clickbar :: a -> IO ()
+clickbar _ = js_message "bar was clicked"
 
-func :: a -> IO ()
-func _ = putStrLn "func is called"
+clickbaz :: a -> IO ()
+clickbaz _ = js_message "baz was clicked"
+
 
 main :: IO ()
 main = do 
-    funccb <- asyncCallback1 AlwaysRetain func
-    putStrLn "hellow world!"
+    clickbarref <- asyncCallback1 AlwaysRetain clickbar
+    clickbazref <- asyncCallback1 AlwaysRetain clickbaz
     r <- runMaybeT $ do
       doc <- MaybeT currentDocument
-      foo <- MaybeT (documentQuerySelector doc (".foo" :: JSString))
+      bar <- lift . toJSRef =<< MaybeT (documentQuerySelector doc (".bar" :: JSString))
+      baz <- lift . toJSRef =<< MaybeT (documentQuerySelector doc (".baz" :: JSString))
       lift $ do
         ref <- newObj
         del <-delegator ref
-        fooref <- toJSRef foo
-        addEvent fooref "click" funccb
-        putStrLn "hellow world2"
+        addEvent bar "click" clickbarref
+        addEvent baz "click" clickbazref
+
     case r of
       Nothing -> print "something wrong"
       Just _ -> print "welldone"
